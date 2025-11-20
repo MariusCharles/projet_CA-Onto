@@ -1,6 +1,0 @@
-city,datetime,temperature,humidity,weather
-Paris,2025-11-20 15:58:37,5.34,60,partiellement nuageux
-
-Paris,2025-11-20 16:02:07,5.34,60,partiellement nuageux
-Dublin,2025-11-20 16:02:07,9.72,91,brume
-Shanghai,2025-11-20 16:02:08,9.92,46,ciel dégagé

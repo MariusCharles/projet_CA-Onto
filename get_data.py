@@ -1,70 +1,107 @@
 import os
 import csv
 import requests
-from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Charger la clé API
+# Charger la clé API NOAA depuis .env
 load_dotenv()
-API_KEY = os.getenv("OWM_KEY")
-if API_KEY is None:
-    raise ValueError("Clé API OWM manquante dans .env")
+NOAA_TOKEN = os.getenv("NOAA_TOKEN")
+if NOAA_TOKEN is None:
+    raise ValueError("Clé API NOAA manquante dans .env")
 
-# Dossier data
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
-# Nom du CSV unique
-CSV_FILE = DATA_DIR / "weather_all_cities.csv"
-
-def get_weather(city):
-    """Télécharge les données météo pour une ville"""
-    url = "https://api.openweathermap.org/data/2.5/weather"
-    params = {"q": city, "appid": API_KEY, "units": "metric", "lang": "fr"}
-    response = requests.get(url, params=params)
+def get_station_metadata(station_id):
+    """Récupère les métadonnées d'une station NOAA via l'API"""
+    url = f"https://www.ncei.noaa.gov/cdo-web/api/v2/stations/GHCND:{station_id}"
+    headers = {"token": NOAA_TOKEN}
+    response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print(f"Erreur API pour {city} : {response.status_code} {response.text}")
-        return None
-    return response.json()
-
-def append_to_csv(data, city):
-    """Ajoute une ligne au CSV unique"""
-    now = datetime.now()
-    row = {
-        "city": city,
-        "datetime": now.strftime("%Y-%m-%d %H:%M:%S"),
-        "temperature": data["main"]["temp"],
-        "humidity": data["main"]["humidity"],
-        "weather": data["weather"][0]["description"]
+        raise RuntimeError(f"Erreur API NOAA (station): {response.status_code} {response.text}")
+    data = response.json()
+    return {
+        "id": station_id,
+        "name": data.get("name", ""),
+        "latitude": data.get("latitude", ""),
+        "longitude": data.get("longitude", ""),
+        "elevation": data.get("elevation", "")
     }
 
-    # Vérifier si le fichier existe déjà
-    file_exists = CSV_FILE.exists()
+def fetch_noaa_data(station_id, start_date, end_date):
+    """Télécharge les données NOAA pour une station entre deux dates"""
+    url = "https://www.ncei.noaa.gov/cdo-web/api/v2/data"
+    headers = {"token": NOAA_TOKEN}
+    params = {
+        "datasetid": "GHCND",
+        "stationid": f"GHCND:{station_id}",
+        "startdate": start_date,
+        "enddate": end_date,
+        "limit": 1000
+    }
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code != 200:
+        raise RuntimeError(f"Erreur API NOAA: {response.status_code} {response.text}")
+    return response.json().get("results", [])
 
-    with open(CSV_FILE, mode="a", newline="", encoding="utf-8") as f:
-        fields = ["city", "datetime", "temperature", "humidity", "weather"]
+def write_csv(station_meta, data, filename):
+    """Crée un CSV au format attendu pour le script RDF"""
+    fields = [
+        "STATION","NAME","LATITUDE","LONGITUDE","ELEVATION",
+        "DATE","PRCP","PRCP_ATTRIBUTES",
+        "SNWD","SNWD_ATTRIBUTES",
+        "TAVG","TAVG_ATTRIBUTES",
+        "TMAX","TMAX_ATTRIBUTES",
+        "TMIN","TMIN_ATTRIBUTES"
+    ]
+    rows_by_date = {}
+    for entry in data:
+        date = entry["date"][:10]
+        dtype = entry["datatype"]
+        value = entry.get("value", "")
+        attr = entry.get("attributes", "")
+        if date not in rows_by_date:
+            rows_by_date[date] = {}
+        rows_by_date[date][dtype] = (value, attr)
+
+    with open(filename, mode="w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
-        if not file_exists:
-            writer.writeheader()  # écrire les entêtes si fichier inexistant
-        writer.writerow(row)
+        writer.writeheader()
+        for date, values in sorted(rows_by_date.items()):
+            row = {
+                "STATION": station_meta["id"],
+                "NAME": station_meta["name"],
+                "LATITUDE": station_meta["latitude"],
+                "LONGITUDE": station_meta["longitude"],
+                "ELEVATION": station_meta["elevation"],
+                "DATE": date,
+                "PRCP": values.get("PRCP", [""])[0],
+                "PRCP_ATTRIBUTES": values.get("PRCP", [""])[1] if "PRCP" in values else "",
+                "SNWD": values.get("SNWD", [""])[0] if "SNWD" in values else "",
+                "SNWD_ATTRIBUTES": values.get("SNWD", [""])[1] if "SNWD" in values else "",
+                "TAVG": values.get("TAVG", [""])[0] if "TAVG" in values else "",
+                "TAVG_ATTRIBUTES": values.get("TAVG", [""])[1] if "TAVG" in values else "",
+                "TMAX": values.get("TMAX", [""])[0] if "TMAX" in values else "",
+                "TMAX_ATTRIBUTES": values.get("TMAX", [""])[1] if "TMAX" in values else "",
+                "TMIN": values.get("TMIN", [""])[0] if "TMIN" in values else "",
+                "TMIN_ATTRIBUTES": values.get("TMIN", [""])[1] if "TMIN" in values else "",
+            }
+            writer.writerow(row)
 
-    return CSV_FILE
-
-def fetch_and_append(city):
-    """Télécharge et ajoute au CSV unique"""
-    data = get_weather(city)
-    if data:
-        return append_to_csv(data, city)
-    return None
-
+def fetch_and_save(station_id, start_date, end_date):
+    station_meta = get_station_metadata(station_id)
+    data = fetch_noaa_data(station_id, start_date, end_date)
+    if not data:
+        print(f"Aucune donnée pour {station_meta['name']} entre {start_date} et {end_date}")
+        return
+    filename = DATA_DIR / f"{station_id}_{start_date}_to_{end_date}.csv"
+    write_csv(station_meta, data, filename)
+    print(f"Données enregistrées dans : {filename}")
 
 if __name__ == "__main__":
-    # Exemple : tester pour Paris
-    city = "Paris"
-    csv_file = fetch_and_append(city)
-    if csv_file:
-        print(f"Données ajoutées pour {city} dans : {csv_file}")
-    else:
-        print(f"Erreur pour {city}")
+    station_id = "EI000003969"  # Ici tu ne passes que l'identifiant
+    start_date = "1867-01-01"
+    end_date = "1867-01-09"
+    fetch_and_save(station_id, start_date, end_date)
