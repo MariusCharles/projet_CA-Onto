@@ -16,7 +16,7 @@ g = Graph()
 g.parse(rdf_file, format="xml")
 
 
-# Requête SPARQL pour toutes les observations de précipitations
+# Requête SPARQL 
 query = """
 PREFIX classe: <http://example.org/ca/ont/Class/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
@@ -34,12 +34,12 @@ WHERE {
 ORDER BY ?date
 """
 
-# Stocker les résultats
+
 dates = []
 values = []
 
 for row in g.query(query):
-    # Convertir la date string en objet datetime
+
     dates.append(datetime.strptime(str(row.date), "%Y-%m-%d"))
     values.append(float(row.val))
 
@@ -56,9 +56,9 @@ else:
     ax.grid(True)
 
     # Formater les dates pour l'axe x
-    ax.xaxis.set_major_locator(mdates.AutoDateLocator())  # automatiquement déterminer les ticks
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())  
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))  # format AAAA-MM-JJ
-    fig.autofmt_xdate(rotation=45)  # rotation pour lisibilité
+    fig.autofmt_xdate(rotation=45)  
 
     plt.tight_layout()
     fig.savefig(output_image)

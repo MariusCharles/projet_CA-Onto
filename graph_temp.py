@@ -15,6 +15,7 @@ output_image = sys.argv[2]
 g = Graph()
 g.parse(rdf_file, format="xml")
 
+# Requête SPARQL
 query = """
 PREFIX classe: <http://example.org/ca/ont/Class/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
@@ -57,10 +58,10 @@ else:
     ax.legend()
     ax.grid(True)
 
-    # Formater les dates pour l'axe x
-    ax.xaxis.set_major_locator(mdates.AutoDateLocator())  # choix automatique des ticks
+    
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))  # format AAAA-MM-JJ
-    fig.autofmt_xdate(rotation=45)  # rotation pour lisibilité
+    fig.autofmt_xdate(rotation=45)  
 
     plt.tight_layout()
     fig.savefig(output_image)

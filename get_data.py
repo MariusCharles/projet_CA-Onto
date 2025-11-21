@@ -103,7 +103,7 @@ def fetch_and_save(station_id, start_date, end_date):
     print(f"Données enregistrées dans : {filename}")
 
 if __name__ == "__main__":
-    # --- Récupération des arguments depuis Streamlit (ou CLI) ---
+    #  Récupération des arguments depuis Streamlit (ou CLI)
     if len(sys.argv) != 4:
         print("Usage: python get_data.py <station_id> <start_date> <end_date>")
         sys.exit(1)

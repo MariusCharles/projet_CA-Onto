@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ca="http://example.org/ca/ont/"
+   xmlns:dul="http://www.loa-cnr.it/ontologies/DUL.owl#"
+   xmlns:qudt="http://qudt.org/1.1/schema/qudt#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sosa="http://www.w3.org/ns/sosa/"
+   xmlns:wgs84="http://example.org/people/"
+>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/tprt/2015-11-24">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-24</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/tprt"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-24"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-24"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-24"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/tprt/2015-11-21">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-21</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/tprt"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-21"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-21"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-21"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-22">
+    <rdfs:label>avg</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">32.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/sensor/EI000003969/prcp">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationSensor"/>
+    <sosa:isHostedby rdf:resource="http://example.org/ca/ont/EI000003969"/>
+    <sosa:observes rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/tprt/2015-11-23">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-23</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/tprt"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-23"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-23"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-23">
+    <rdfs:label>min</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">-12.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-24">
+    <rdfs:label>avg</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">77.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-22">
+    <rdfs:label>min</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">13.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/prcp/2015-11-22">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-22</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/prcp"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-22"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/prcp/2015-11-23">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-23</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/prcp"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-25">
+    <rdfs:label>avg</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">88.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-24">
+    <rdfs:label>min</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">34.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-21">
+    <rdfs:label>precipitation</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#Inch"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-25">
+    <rdfs:label>max</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">108.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-23">
+    <rdfs:label>precipitation</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#Inch"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">27.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-21">
+    <rdfs:label>avg</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">32.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969">
+    <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Platform"/>
+    <rdfs:label>DUBLIN PHOENIX PARK, EI</rdfs:label>
+    <dul:hasLocation rdf:resource="http://example.org/ca/ont/EI000003969/location"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-22">
+    <rdfs:label>precipitation</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#Inch"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-23">
+    <rdfs:label>max</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">92.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-23">
+    <rdfs:label>avg</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-21">
+    <rdfs:label>min</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-24">
+    <rdfs:label>max</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">93.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/prcp/2015-11-24">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-24</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/prcp"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-24"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/PrecipitationSensor">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-25">
+    <rdfs:label>min</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">76.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-21">
+    <rdfs:label>max</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">52.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/tprt/2015-11-22">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-22</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/tprt"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-22"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-22"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-22"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-25">
+    <rdfs:label>precipitation</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#Inch"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/location">
+    <ca:locationID>EI000003969</ca:locationID>
+    <wgs84:lat>53.3639</wgs84:lat>
+    <wgs84:lon>-6.3192</wgs84:lon>
+    <wgs84:alt>49</wgs84:alt>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/TemperatureObservation">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/tprt/2015-11-25">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-25</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/tprt"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/avg/2015-11-25"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/min/2015-11-25"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-25"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-24">
+    <rdfs:label>precipitation</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#Inch"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">19.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/PrecipitationObservation">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/prcp/2015-11-25">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-25</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/prcp"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-25"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/obsv/EI000003969/sensor/prcp/2015-11-21">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/PrecipitationObservation"/>
+    <sosa:resultTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-21</sosa:resultTime>
+    <sosa:observedProperty rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureprecipitation_amount"/>
+    <sosa:madeBySensor rdf:resource="http://example.org/ca/ont/sensor/EI000003969/prcp"/>
+    <sosa:hasResult rdf:resource="http://example.org/ca/ont/EI000003969/result/sensor/prcp/prcp/2015-11-21"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/sensor/EI000003969/tprt">
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureSensor"/>
+    <sosa:isHostedby rdf:resource="http://example.org/ca/ont/EI000003969"/>
+    <sosa:observes rdf:resource="http://purl.oclc.org/NET/ssnx/cf/cf-featureair_temperature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/PrecipitationResult">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/TemperatureResult">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/EI000003969/result/sensor/tprt/max/2015-11-22">
+    <rdfs:label>max</rdfs:label>
+    <rdf:type rdf:resource="http://example.org/ca/ont/Class/TemperatureResult"/>
+    <rdf:type rdf:resource="http://qudt.org/1.1/schema/qudt#QuantityValue"/>
+    <qudt:unit rdf:resource="http://qudt.org/1.1/vocab/unit#DegreeFahrenheit"/>
+    <qudt:numericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">82.0</qudt:numericValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ca/ont/Class/TemperatureSensor">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
+  </rdf:Description>
+</rdf:RDF>

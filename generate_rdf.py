@@ -7,7 +7,7 @@ from rdflib.namespace import CSVW, DC, DCAT, DCTERMS, DOAP, FOAF, ODRL2, ORG, OW
     PROF, PROV, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VOID, XMLNS, XSD
 from rdflib import Namespace
 
-# --- Namespaces ---
+# Namespaces 
 wgs84 = Namespace("http://example.org/people/")
 qudt = Namespace("http://qudt.org/1.1/schema/qudt#")
 unit = Namespace("http://qudt.org/1.1/vocab/unit#")
@@ -33,7 +33,7 @@ triples_classes = [
     (ca_prcpResult, RDFS.subClassOf, SOSA.Result)
 ]
 
-# --- Fonction principale ---
+# Fonction principale 
 def generate_rdf(station, start_date, end_date):
     """
     Génère le RDF à partir du CSV correspondant à la station et aux dates.
@@ -48,7 +48,7 @@ def generate_rdf(station, start_date, end_date):
         print(f"[ERREUR] Le fichier CSV n'existe pas : {csvpath}")
         return
 
-    # --- Lecture CSV ---
+    # Lecture CSV 
     with open(csvpath) as f:
         csvreader = csv.reader(f)
         record_head = list(next(csvreader))
@@ -171,7 +171,7 @@ def generate_rdf(station, start_date, end_date):
 
     triples_lst += triples_classes
 
-    # --- Création du graphe RDF ---
+    # Création du graphe RDF 
     g = Graph()
     g.bind("wgs84", wgs84)
     g.bind("qudt", qudt)
@@ -193,7 +193,7 @@ def generate_rdf(station, start_date, end_date):
     print(f"Fichier RDF généré dans : {output_file}")
 
 
-# --- CLI ---
+# CLI
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print("Usage: python script.py <station_id> <start_date> <end_date>")
