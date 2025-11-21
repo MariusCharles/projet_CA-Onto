@@ -1,10 +1,11 @@
 import os
 import csv
+import sys
 import requests
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Charger la clé API NOAA depuis .env
+# Charger la clé API NOAA
 load_dotenv()
 NOAA_TOKEN = os.getenv("NOAA_TOKEN")
 if NOAA_TOKEN is None:
@@ -56,6 +57,7 @@ def write_csv(station_meta, data, filename):
         "TMAX","TMAX_ATTRIBUTES",
         "TMIN","TMIN_ATTRIBUTES"
     ]
+
     rows_by_date = {}
     for entry in data:
         date = entry["date"][:10]
@@ -78,15 +80,15 @@ def write_csv(station_meta, data, filename):
                 "ELEVATION": station_meta["elevation"],
                 "DATE": date,
                 "PRCP": values.get("PRCP", [""])[0],
-                "PRCP_ATTRIBUTES": values.get("PRCP", [""])[1] if "PRCP" in values else "",
-                "SNWD": values.get("SNWD", [""])[0] if "SNWD" in values else "",
-                "SNWD_ATTRIBUTES": values.get("SNWD", [""])[1] if "SNWD" in values else "",
-                "TAVG": values.get("TAVG", [""])[0] if "TAVG" in values else "",
-                "TAVG_ATTRIBUTES": values.get("TAVG", [""])[1] if "TAVG" in values else "",
-                "TMAX": values.get("TMAX", [""])[0] if "TMAX" in values else "",
-                "TMAX_ATTRIBUTES": values.get("TMAX", [""])[1] if "TMAX" in values else "",
-                "TMIN": values.get("TMIN", [""])[0] if "TMIN" in values else "",
-                "TMIN_ATTRIBUTES": values.get("TMIN", [""])[1] if "TMIN" in values else "",
+                "PRCP_ATTRIBUTES": values.get("PRCP", ["",""])[1] if "PRCP" in values else "",
+                "SNWD": values.get("SNWD", [""])[0],
+                "SNWD_ATTRIBUTES": values.get("SNWD", ["",""])[1] if "SNWD" in values else "",
+                "TAVG": values.get("TAVG", [""])[0],
+                "TAVG_ATTRIBUTES": values.get("TAVG", ["",""])[1] if "TAVG" in values else "",
+                "TMAX": values.get("TMAX", [""])[0],
+                "TMAX_ATTRIBUTES": values.get("TMAX", ["",""])[1] if "TMAX" in values else "",
+                "TMIN": values.get("TMIN", [""])[0],
+                "TMIN_ATTRIBUTES": values.get("TMIN", ["",""])[1] if "TMIN" in values else "",
             }
             writer.writerow(row)
 
@@ -101,7 +103,13 @@ def fetch_and_save(station_id, start_date, end_date):
     print(f"Données enregistrées dans : {filename}")
 
 if __name__ == "__main__":
-    station_id = "EI000003969"  # Ici tu ne passes que l'identifiant
-    start_date = "1867-01-01"
-    end_date = "1867-01-09"
+    # --- Récupération des arguments depuis Streamlit (ou CLI) ---
+    if len(sys.argv) != 4:
+        print("Usage: python get_data.py <station_id> <start_date> <end_date>")
+        sys.exit(1)
+
+    station_id = sys.argv[1]
+    start_date = sys.argv[2]
+    end_date = sys.argv[3]
+
     fetch_and_save(station_id, start_date, end_date)

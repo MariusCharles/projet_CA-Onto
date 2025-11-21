@@ -1,12 +1,20 @@
+# graph_temp.py
+import sys
 from rdflib import Graph
-import matplotlib.pyplot as plt
 from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
-# Charger le fichier RDF
+if len(sys.argv) != 3:
+    print("Usage: python graph_temp.py <rdf_file> <output_image>")
+    sys.exit(1)
+
+rdf_file = sys.argv[1]
+output_image = sys.argv[2]
+
 g = Graph()
-g.parse("data/weather.rdf", format="xml")
+g.parse(rdf_file, format="xml")
 
-# Requête SPARQL pour toutes les observations de température
 query = """
 PREFIX classe: <http://example.org/ca/ont/Class/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
@@ -30,25 +38,29 @@ WHERE {
 ORDER BY ?date
 """
 
-# Stocker les résultats
-dates = []
-min_vals = []
-max_vals = []
+dates, min_vals, max_vals = [], [], []
 
 for row in g.query(query):
     dates.append(datetime.strptime(str(row.date), "%Y-%m-%d"))
     min_vals.append(float(row.minval))
     max_vals.append(float(row.maxval))
 
-# Créer le graphique
-plt.figure(figsize=(10,5))
-plt.plot(dates, min_vals, marker='o', linestyle='-', color='blue', label='Min Temp')
-plt.plot(dates, max_vals, marker='o', linestyle='-', color='red', label='Max Temp')
-plt.title("Températures min et max par date")
-plt.xlabel("Date")
-plt.ylabel("Température (°F)")
-plt.grid(True)
-plt.legend()
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+if not dates:
+    print("Aucune donnée de température trouvée.")
+else:
+    fig, ax = plt.subplots(figsize=(10,5))
+    ax.plot(dates, min_vals, marker='o', linestyle='-', color='blue', label='Min Temp')
+    ax.plot(dates, max_vals, marker='o', linestyle='-', color='red', label='Max Temp')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Température (°F)")
+    ax.set_title("Températures min et max par date")
+    ax.legend()
+    ax.grid(True)
+
+    # Formater les dates pour l'axe x
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())  # choix automatique des ticks
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))  # format AAAA-MM-JJ
+    fig.autofmt_xdate(rotation=45)  # rotation pour lisibilité
+
+    plt.tight_layout()
+    fig.savefig(output_image)

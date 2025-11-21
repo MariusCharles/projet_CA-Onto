@@ -1,10 +1,20 @@
+# graph_precip.py
+import sys
 from rdflib import Graph
-import matplotlib.pyplot as plt
 from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
-# Charger le fichier RDF
+if len(sys.argv) != 3:
+    print("Usage: python graph_precip.py <rdf_file> <output_image>")
+    sys.exit(1)
+
+rdf_file = sys.argv[1]
+output_image = sys.argv[2]
+
 g = Graph()
-g.parse("data/weather.rdf", format="xml")
+g.parse(rdf_file, format="xml")
+
 
 # Requête SPARQL pour toutes les observations de précipitations
 query = """
@@ -33,13 +43,22 @@ for row in g.query(query):
     dates.append(datetime.strptime(str(row.date), "%Y-%m-%d"))
     values.append(float(row.val))
 
-# Créer le graphique
-plt.figure(figsize=(10,5))
-plt.plot(dates, values, marker='o', linestyle='-', color='blue')
-plt.title("Précipitations par date")
-plt.xlabel("Date")
-plt.ylabel("Précipitation (inch)")
-plt.grid(True)
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+
+
+if not dates:
+    print("Aucune donnée de précipitation trouvée.")
+else:
+    fig, ax = plt.subplots(figsize=(10,5))
+    ax.plot(dates, values, marker='o', linestyle='-', color='blue')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Précipitation (mm)")
+    ax.set_title("Précipitation par date")
+    ax.grid(True)
+
+    # Formater les dates pour l'axe x
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())  # automatiquement déterminer les ticks
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))  # format AAAA-MM-JJ
+    fig.autofmt_xdate(rotation=45)  # rotation pour lisibilité
+
+    plt.tight_layout()
+    fig.savefig(output_image)
