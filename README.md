@@ -73,6 +73,9 @@ Sur la page :
 - Le projet utilise **CA Ontology** pour structurer les données RDF.
 - Le pseudo-terminal intégré affiche les logs en direct lors de l’exécution des scripts.
 - Certaines stations n’ont pas de données pour toutes les dates. Il peut être nécessaire d’essayer plusieurs combinaisons.
+
+  > Note : La page peut légèrement se figer pendant quelques instants en raison des interactions avec l'API NOAA.
+
   
 
 
