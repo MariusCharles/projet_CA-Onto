@@ -55,6 +55,11 @@ pip install streamlit pandas matplotlib folium streamlit-folium requests python-
 NOAA_TOKEN=VOTRE_TOKEN_ICI
 ```
 
+4. Lancer le script
+```bash
+streamlit run stream.py
+```
+
 ## Utilisation
 
 
