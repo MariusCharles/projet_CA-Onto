@@ -37,6 +37,11 @@ projet_CA-Onto/
 
 ## Installation
 
+> Pour pouvoir interroger l’API NOAA, vous devez disposer d’une clé API valide et la renseigner dans un fichier `.env` sous la forme :  
+> `NOAA_TOKEN=<votre_clé_API>`.  
+> Vous pouvez obtenir cette clé gratuitement en fournissant votre adresse e-mail sur : https://www.ncdc.noaa.gov/cdo-web/token
+
+
 1. Cloner le dépôt :
 
 ```bash
